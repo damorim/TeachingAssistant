@@ -2,6 +2,6 @@
 
 $> npm install
 
-2. Run the server
+2. Start the server (check script "start" on package.json)
 
-$> npm serve
+$> npm start
