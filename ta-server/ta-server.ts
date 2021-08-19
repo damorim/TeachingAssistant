@@ -53,9 +53,12 @@ taserver.get('/matriculas', (req: express.Request, res: express.Response) =>{
 taserver.post('/matriculas', (req: express.Request, res: express.Response) => {
   let { cpf, disciplina } = req.body;
   let matricula = new Matricula(cadastroIndex, cpf, disciplina);
-  cadastroMatriculas.adicionarMatricula(matricula);
-
-  return res.send(matricula);
+  var result = cadastroMatriculas.adicionarMatricula(matricula);
+  cadastroIndex++;
+  if(!result){
+    return res.send({"failure": "A matrícula não pode ser cadastrada"});
+  }
+  return res.send({"success": "A matrícula foi realizada com sucesso"});
 })
 
 var server = taserver.listen(3000, function () {
