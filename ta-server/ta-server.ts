@@ -1,12 +1,16 @@
 import express = require('express');
 import bodyParser = require("body-parser");
 
-import {Aluno} from '../common/aluno';
-import {CadastroDeAlunos} from './cadastrodealunos';
+import { Aluno } from '../common/aluno';
+import { CadastroDeAlunos } from './cadastrodealunos';
+import { CadastroMatricula } from './cadastromatricula';
+import { Matricula } from '../common/matricula';
 
 var taserver = express();
 
-var cadastro: CadastroDeAlunos = new CadastroDeAlunos();
+const cadastro: CadastroDeAlunos = new CadastroDeAlunos();
+const cadastroMatriculas: CadastroMatricula = new CadastroMatricula();
+var cadastroIndex = 1;
 
 var allowCrossDomain = function(req: any, res: any, next: any) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -40,6 +44,18 @@ taserver.put('/aluno', function (req: express.Request, res: express.Response) {
   } else {
     res.send({"failure": "O aluno não pode ser atualizado"});
   }
+})
+
+taserver.get('/matriculas', (req: express.Request, res: express.Response) =>{
+  return res.send(cadastroMatriculas.obterMatriculas());
+});
+
+taserver.post('/matriculas', (req: express.Request, res: express.Response) => {
+  let { cpf, disciplina } = req.body;
+  let matricula = new Matricula(cadastroIndex, cpf, disciplina);
+  cadastroMatriculas.adicionarMatricula(matricula);
+
+  return res.send(matricula);
 })
 
 var server = taserver.listen(3000, function () {
