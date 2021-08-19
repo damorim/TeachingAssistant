@@ -1,0 +1,16 @@
+<table>
+    <tr>
+       <th>CPF</th>
+       <th>Disciplina</th>
+       <th>Notas</th>
+    </tr>
+    <tr *ngFor="let matricula of matriculas">
+       <td>{{ matricula.cpf }}</td>
+       <td>{{ matricula.disciplina }}</td>
+       <td>{{ matricula.notas.join(", ") }}</td>
+    </tr>
+</table>
+
+<input [(ngModel)]="this.cpf">
+<input [(ngModel)]="this.disciplina">
+<button (click)="realizarMatricula(cpf, disciplina)"> Cadastrar nova matrícula</button>

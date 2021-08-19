@@ -9,12 +9,15 @@ import { AppComponent } from './app.component';
 import { MetasComponent } from './metas.component';
 import { AlunosComponent } from './alunos.component';
 import { AlunoService } from './aluno.service';
+import { MatriculasComponent } from './matricula/matricula.component';
+import { MatriculaService } from './matricula/matricula.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MetasComponent,
-    AlunosComponent
+    AlunosComponent,
+    MatriculasComponent
   ],
   imports: [
     BrowserModule,
@@ -29,10 +32,14 @@ import { AlunoService } from './aluno.service';
       {
         path: 'alunos',
         component: AlunosComponent
+      },
+      {
+        path: 'matriculas',
+        component: MatriculasComponent
       }
     ])
   ],
-  providers: [AlunoService],
+  providers: [AlunoService, MatriculaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
