@@ -2,12 +2,16 @@
     <tr>
        <th>CPF</th>
        <th>Disciplina</th>
-       <th>Notas</th>
+       <th>Nota 1</th>
+       <th>Nota 2</th>
+       <th>Nota 3</th>
     </tr>
     <tr *ngFor="let matricula of matriculas">
       <td><input [(ngModel)]="matricula.cpf"></td>
       <td><input [(ngModel)]="matricula.disciplina"></td>
-      <td>{{ matricula.notas.join(", ") }}</td>
+      <td><input [(ngModel)]="matricula.notas[0]" type="number" max="10" min="0"></td>
+      <td><input [(ngModel)]="matricula.notas[1]" type="number" max="10" min="0"></td>
+      <td><input [(ngModel)]="matricula.notas[2]" type="number" max="10" min="0"></td>
       <button (click)="atualizarMatricula(matricula)"> Atualizar </button>
       <button (click)="deletarMatricula(matricula.id)"> Deletar </button>
     </tr>

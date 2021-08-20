@@ -8,7 +8,7 @@ export class Matricula {
         this.id = id;
         this.cpf = cpf;
         this.disciplina = disciplina;
-        this.notas = [];
+        this.notas = [0, 0, 0];
     }
 
     adicionarNota(nota: number){

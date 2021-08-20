@@ -45,6 +45,13 @@ export class MatriculasComponent implements OnInit{
     }
 
     atualizarMatricula(matricula: Matricula){
+        for(let nota of matricula.notas){
+            if(nota < 0 || nota > 10){
+                this.listarMatriculas();
+                return;
+            }
+        }
+
         return this.matriculaService.atualizarMatricula(matricula).subscribe({
             next: () => {
                 this.listarMatriculas();
