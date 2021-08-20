@@ -35,9 +35,33 @@ export class MatriculasComponent implements OnInit{
         return this.matriculaService.cadastrarMatricula(cpf, disciplina).subscribe({
             next: () => {
                 this.listarMatriculas();
+                this.cpfAluno = "";
+                this.disciplina = "";
             },
             error: () => {
                 console.log("Erro ao realizar nova matrícula");
+            }
+        })
+    }
+
+    atualizarMatricula(matricula: Matricula){
+        return this.matriculaService.atualizarMatricula(matricula).subscribe({
+            next: () => {
+                this.listarMatriculas();
+            },
+            error: () => {
+                console.log("Erro ao atualizar a matrícula");
+            }
+        })
+    }
+
+    deletarMatricula(id: number){
+        return this.matriculaService.deletarMatricula(id).subscribe({
+            next: () => {
+                this.listarMatriculas();
+            },
+            error: () => {
+                console.log("Erro ao deletar a matrícula");
             }
         })
     }

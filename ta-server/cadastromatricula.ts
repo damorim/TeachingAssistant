@@ -9,7 +9,7 @@ export class CadastroMatricula {
 
     obterMatriculas() {
         return this.matriculas;
-    }
+    }  
 
     adicionarMatricula(matricula: Matricula){
         
@@ -25,9 +25,12 @@ export class CadastroMatricula {
         return matricula;
     }
 
-    atualizarMatricula(matricula: Matricula){
+    atualizarMatricula(matricula: Matricula) : boolean{
+        if(!this.matriculas.find(m => m.id == matricula.id))
+            return false;
         this.matriculas = this.matriculas.filter(m => m.id != matricula.id);
         this.matriculas.push(matricula);
+        return true;
     }
 
     removerMatricula(idMatricula: number){

@@ -16,6 +16,14 @@ export class MatriculaService {
     return this.http.get<Matricula[]>(this.matriculasURL);
   }
 
+  atualizarMatricula(matricula: Matricula): Observable<any>{
+    return this.http.put<any>(this.matriculasURL + '/' + matricula.id, matricula);
+  }
+
+  deletarMatricula(id: number): Observable<any>{
+    return this.http.delete<any>(this.matriculasURL + '/' + id);
+  }
+
   cadastrarMatricula(cpf: string, disciplina: string) {
       return this.http.post<any>(this.matriculasURL, {
           cpf,

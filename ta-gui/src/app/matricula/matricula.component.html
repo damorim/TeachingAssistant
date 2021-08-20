@@ -5,12 +5,14 @@
        <th>Notas</th>
     </tr>
     <tr *ngFor="let matricula of matriculas">
-       <td>{{ matricula.cpf }}</td>
-       <td>{{ matricula.disciplina }}</td>
-       <td>{{ matricula.notas.join(", ") }}</td>
+      <td><input [(ngModel)]="matricula.cpf"></td>
+      <td><input [(ngModel)]="matricula.disciplina"></td>
+      <td>{{ matricula.notas.join(", ") }}</td>
+      <button (click)="atualizarMatricula(matricula)"> Atualizar </button>
+      <button (click)="deletarMatricula(matricula.id)"> Deletar </button>
     </tr>
 </table>
 
-<input [(ngModel)]="this.cpf">
+<input [(ngModel)]="this.cpfAluno">
 <input [(ngModel)]="this.disciplina">
-<button (click)="realizarMatricula(cpf, disciplina)"> Cadastrar nova matrícula</button>
+<button (click)="realizarMatricula(cpfAluno, disciplina)"> Cadastrar nova matrícula</button>

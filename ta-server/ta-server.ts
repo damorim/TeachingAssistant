@@ -61,6 +61,20 @@ taserver.post('/matriculas', (req: express.Request, res: express.Response) => {
   return res.send({"success": "A matrícula foi realizada com sucesso"});
 })
 
+taserver.put('/matriculas/:id', (req: express.Request, res: express.Response) => {
+  let matriculaAt : Matricula = req.body;
+  if(cadastroMatriculas.atualizarMatricula(matriculaAt))
+    return res.send({"success": "A matrícula foi atualizada com sucesso"});
+  else 
+    return res.send({"failure": "A matrícula não pode ser cadastrada"});
+})
+
+taserver.delete('/matriculas/:id', (req: express.Request, res: express.Response) => {
+  let id = req.params.id;
+  cadastroMatriculas.removerMatricula(Number(id));
+  return res.send({"success": "A matrícula foi removida com sucesso"});
+})
+
 var server = taserver.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
