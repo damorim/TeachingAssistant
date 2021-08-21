@@ -12,6 +12,7 @@ export class MatriculasComponent implements OnInit{
     matriculas: Matricula[] = [];
 
     cpfAluno: string = "";
+    nomeAluno: string = "";
     disciplina: string = "";
 
     constructor(private matriculaService: MatriculaService){}
@@ -31,11 +32,12 @@ export class MatriculasComponent implements OnInit{
         })
     }
 
-    realizarMatricula(cpf: string, disciplina: string){
-        return this.matriculaService.cadastrarMatricula(cpf, disciplina).subscribe({
+    realizarMatricula(cpf: string, nomeAluno: string, disciplina: string){
+        return this.matriculaService.cadastrarMatricula(cpf, nomeAluno, disciplina).subscribe({
             next: () => {
                 this.listarMatriculas();
                 this.cpfAluno = "";
+                this.nomeAluno = "";
                 this.disciplina = "";
             },
             error: () => {

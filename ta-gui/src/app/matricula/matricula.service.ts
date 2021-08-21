@@ -24,9 +24,10 @@ export class MatriculaService {
     return this.http.delete<any>(this.matriculasURL + '/' + id);
   }
 
-  cadastrarMatricula(cpf: string, disciplina: string) {
+  cadastrarMatricula(cpf: string, nomeAluno:string, disciplina: string) {
       return this.http.post<any>(this.matriculasURL, {
           cpf,
+          nomeAluno,
           disciplina
       });
   }

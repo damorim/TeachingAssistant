@@ -1,6 +1,7 @@
 <table>
     <tr>
        <th>CPF</th>
+       <th>Nome</th>
        <th>Disciplina</th>
        <th>Nota 1</th>
        <th>Nota 2</th>
@@ -8,15 +9,17 @@
     </tr>
     <tr *ngFor="let matricula of matriculas">
       <td><input [(ngModel)]="matricula.cpf"></td>
+      <td><input [(ngModel)]="matricula.nomeAluno"></td>
       <td><input [(ngModel)]="matricula.disciplina"></td>
       <td><input [(ngModel)]="matricula.notas[0]" type="number" max="10" min="0"></td>
       <td><input [(ngModel)]="matricula.notas[1]" type="number" max="10" min="0"></td>
       <td><input [(ngModel)]="matricula.notas[2]" type="number" max="10" min="0"></td>
-      <button (click)="atualizarMatricula(matricula)"> Atualizar </button>
-      <button (click)="deletarMatricula(matricula.id)"> Deletar </button>
+      <button class="update" (click)="atualizarMatricula(matricula)"> Atualizar </button>
+      <button class="remove" (click)="deletarMatricula(matricula.id)"> Deletar </button>
     </tr>
 </table>
 
 <input [(ngModel)]="this.cpfAluno">
+<input [(ngModel)]="this.nomeAluno">
 <input [(ngModel)]="this.disciplina">
-<button (click)="realizarMatricula(cpfAluno, disciplina)"> Cadastrar nova matrícula</button>
+<button (click)="realizarMatricula(cpfAluno, nomeAluno, disciplina)"> Cadastrar nova matrícula</button>

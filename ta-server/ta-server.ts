@@ -51,8 +51,8 @@ taserver.get('/matriculas', (req: express.Request, res: express.Response) =>{
 });
 
 taserver.post('/matriculas', (req: express.Request, res: express.Response) => {
-  let { cpf, disciplina } = req.body;
-  let matricula = new Matricula(cadastroIndex, cpf, disciplina);
+  let { cpf, nomeAluno, disciplina } = req.body;
+  let matricula = new Matricula(cadastroIndex, cpf, nomeAluno, disciplina);
   var result = cadastroMatriculas.adicionarMatricula(matricula);
   cadastroIndex++;
   if(!result){
