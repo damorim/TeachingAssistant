@@ -12,8 +12,4 @@ export class Matricula {
         this.disciplina = disciplina;
         this.notas = [0, 0, 0];
     }
-
-    adicionarNota(nota: number){
-        this.notas.push(nota);
-    }
 }
