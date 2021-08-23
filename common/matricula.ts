@@ -12,4 +12,8 @@ export class Matricula {
         this.disciplina = disciplina;
         this.notas = [0, 0, 0];
     }
+
+    calcularMedia() : number {
+        return (this.notas[0] + this.notas[1] + this.notas[2]) / 3;
+    }
 }

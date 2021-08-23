@@ -14,6 +14,7 @@ export class MatriculasComponent implements OnInit{
     cpfAluno: string = "";
     nomeAluno: string = "";
     disciplina: string = "";
+    dataLimite: Date = new Date();
 
     constructor(private matriculaService: MatriculaService){}
 
@@ -71,6 +72,17 @@ export class MatriculasComponent implements OnInit{
             },
             error: () => {
                 console.log("Erro ao deletar a matrícula");
+            }
+        })
+    }
+
+    definirDataLimite(dataLimite : Date){
+        return this.matriculaService.definirDataLimite(dataLimite).subscribe({
+            next: () => {
+                console.log("Data limite definida com sucesso");
+            },
+            error: () => {
+                console.log("Erro ao definir da limite");
             }
         })
     }

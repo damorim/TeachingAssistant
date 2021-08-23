@@ -6,6 +6,7 @@
        <th>Nota 1</th>
        <th>Nota 2</th>
        <th>Nota 3</th>
+       <th>Media</th>
     </tr>
     <tr *ngFor="let matricula of matriculas">
       <td><input [(ngModel)]="matricula.cpf"></td>
@@ -14,6 +15,7 @@
       <td><input [(ngModel)]="matricula.notas[0]" type="number" max="10" min="0"></td>
       <td><input [(ngModel)]="matricula.notas[1]" type="number" max="10" min="0"></td>
       <td><input [(ngModel)]="matricula.notas[2]" type="number" max="10" min="0"></td>
+      <td>{{(matricula.notas[0] + matricula.notas[1] + matricula.notas[2])/3 | number : '1.0-2'}}</td>
       <button class="update" (click)="atualizarMatricula(matricula)"> Atualizar </button>
       <button class="remove" (click)="deletarMatricula(matricula.id)"> Deletar </button>
     </tr>
@@ -23,3 +25,8 @@
 <input [(ngModel)]="this.nomeAluno">
 <input [(ngModel)]="this.disciplina">
 <button (click)="realizarMatricula(cpfAluno, nomeAluno, disciplina)"> Cadastrar nova matrícula</button>
+<br/>
+
+<h4>Mudar data limite de cadatro:</h4>
+<input type='date'[(ngModel)]="this.dataLimite">
+<button (click)="definirDataLimite(dataLimite)"> Definir Data Limite</button>

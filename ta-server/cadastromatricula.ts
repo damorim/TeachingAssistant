@@ -1,9 +1,12 @@
 import { Matricula } from '../common/matricula';
+import { isBefore } from 'date-fns';
 
 export class CadastroMatricula {
     matriculas: Matricula[];
+    dataLimite: Date;
 
     constructor(){
+        this.dataLimite = new Date();
         this.matriculas = [];
     }
 
@@ -16,8 +19,11 @@ export class CadastroMatricula {
         let check = this.matriculas.find(m =>
              m.cpf == matricula.cpf &&
              m.disciplina == matricula.disciplina);
-        
-        if(check){
+             
+        let agr = new Date();
+            
+        console.log(isBefore(this.dataLimite, agr));
+        if(check || (isBefore(this.dataLimite, agr))){
             return null;
         }
 
@@ -37,5 +43,7 @@ export class CadastroMatricula {
         this.matriculas = this.matriculas.filter(m => m.id != idMatricula);
     }
 
-    
+    definirDataLimite(dataLimite: Date){
+        this.dataLimite = dataLimite;
+    }
 }

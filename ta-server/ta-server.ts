@@ -75,6 +75,13 @@ taserver.delete('/matriculas/:id', (req: express.Request, res: express.Response)
   return res.send({"success": "A matrícula foi removida com sucesso"});
 })
 
+taserver.post('/matriculas/data', (req: express.Request, res: express.Response) => {
+  let dataLimite : Date = new Date(req.body.dataLimite);
+  console.log("sl: " + dataLimite.toUTCString());
+  cadastroMatriculas.definirDataLimite(dataLimite);
+  return res.send({"success": "A matrícula foi realizada com sucesso"});
+})
+
 var server = taserver.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

@@ -32,4 +32,9 @@ export class MatriculaService {
       });
   }
 
+  definirDataLimite(dataLimite : Date){
+    return this.http.post<any>(this.matriculasURL + '/data', {
+      dataLimite
+    });
+  }
 }
