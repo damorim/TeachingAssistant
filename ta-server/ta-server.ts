@@ -77,7 +77,6 @@ taserver.delete('/matriculas/:id', (req: express.Request, res: express.Response)
 
 taserver.post('/matriculas/data', (req: express.Request, res: express.Response) => {
   let dataLimite : Date = new Date(req.body.dataLimite);
-  console.log("sl: " + dataLimite.toUTCString());
   cadastroMatriculas.definirDataLimite(dataLimite);
   return res.send({"success": "A matrícula foi realizada com sucesso"});
 })

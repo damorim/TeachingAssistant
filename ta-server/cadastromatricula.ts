@@ -21,8 +21,6 @@ export class CadastroMatricula {
              m.disciplina == matricula.disciplina);
              
         let agr = new Date();
-            
-        console.log(isBefore(this.dataLimite, agr));
         if(check || (isBefore(this.dataLimite, agr))){
             return null;
         }
