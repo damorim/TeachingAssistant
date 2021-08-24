@@ -1,4 +1,4 @@
-<table>
+<table id="lista-matricula">
     <tr>
        <th>CPF</th>
        <th>Nome</th>
@@ -8,25 +8,25 @@
        <th>Nota 3</th>
        <th>Media</th>
     </tr>
-    <tr *ngFor="let matricula of matriculas">
-      <td><input [(ngModel)]="matricula.cpf"></td>
-      <td><input [(ngModel)]="matricula.nomeAluno"></td>
-      <td><input [(ngModel)]="matricula.disciplina"></td>
-      <td><input [(ngModel)]="matricula.notas[0]" type="number" max="10" min="0"></td>
-      <td><input [(ngModel)]="matricula.notas[1]" type="number" max="10" min="0"></td>
-      <td><input [(ngModel)]="matricula.notas[2]" type="number" max="10" min="0"></td>
-      <td>{{(matricula.notas[0] + matricula.notas[1] + matricula.notas[2])/3 | number : '1.0-2'}}</td>
-      <button class="update" (click)="atualizarMatricula(matricula)"> Atualizar </button>
-      <button class="remove" (click)="deletarMatricula(matricula.id)"> Deletar </button>
+    <tr *ngFor="let matricula of matriculas" name="aluno-row">
+      <td><input id="{{matricula.cpf}}" [(ngModel)]="matricula.cpf"></td>
+      <td><input id="{{matricula.cpf}}-{{matricula.nomeAluno}}" [(ngModel)]="matricula.nomeAluno"></td>
+      <td><input id="{{matricula.disciplina}}" [(ngModel)]="matricula.disciplina"></td>
+      <td><input id="{{matricula.cpf}}-{{matricula.disciplina}}-g1" [(ngModel)]="matricula.notas[0]" type="number" max="10" min="0"></td>
+      <td><input id="{{matricula.cpf}}-{{matricula.disciplina}}-g2" [(ngModel)]="matricula.notas[1]" type="number" max="10" min="0"></td>
+      <td><input id="{{matricula.cpf}}-{{matricula.disciplina}}-g3" [(ngModel)]="matricula.notas[2]" type="number" max="10" min="0"></td>
+      <td id="{{matricula.cpf}}-{{matricula.disciplina}}-mean">{{(matricula.notas[0] + matricula.notas[1] + matricula.notas[2])/3 | number : '1.0-2'}}</td>
+      <button id="att-{{matricula.cpf}}" class="update" (click)="atualizarMatricula(matricula)"> Atualizar </button>
+      <button id="delete-{{matricula.cpf}}-{{matricula.disciplina}}" class="remove" (click)="deletarMatricula(matricula.id)"> Deletar </button>
     </tr>
 </table>
 
-<input [(ngModel)]="this.cpfAluno">
-<input [(ngModel)]="this.nomeAluno">
-<input [(ngModel)]="this.disciplina">
-<button (click)="realizarMatricula(cpfAluno, nomeAluno, disciplina)"> Cadastrar nova matrícula</button>
+<input id="cpf-form" [(ngModel)]="this.cpfAluno">
+<input id="name-form" [(ngModel)]="this.nomeAluno">
+<input id="course-form" [(ngModel)]="this.disciplina">
+<button id="add-matricula" (click)="realizarMatricula(cpfAluno, nomeAluno, disciplina)">Cadastrar nova matrícula</button>
 <br/>
 
 <h4>Mudar data limite de cadatro:</h4>
-<input type='date'[(ngModel)]="this.dataLimite">
-<button (click)="definirDataLimite(dataLimite)"> Definir Data Limite</button>
+<input id="set-date" type='date'[(ngModel)]="this.dataLimite">
+<button id="send-date" (click)="definirDataLimite(dataLimite)"> Definir Data Limite</button>
