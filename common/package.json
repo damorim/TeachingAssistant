@@ -1,0 +1,15 @@
+{
+  "name": "ta-common",
+  "version": "1.0.0",
+  "description": "common files to both client and server",
+  "scripts": {},
+  "keywords": [],
+  "author": "Marcelo Damorim",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "tslib": "^2.3.1"
+  }
+}

@@ -31,4 +31,18 @@ export class Aluno {
     }
     return metas;
   }
+
+  copyFrom(from: Aluno): void {
+    this.nome = from.nome;
+    this.cpf = from.cpf;
+    this.email = from.email;
+    this.copyMetasFrom(from.metas);
+  }
+
+  copyMetasFrom(from: Map<string,string>): void {
+    this.metas = new Map<string,string>();
+    for (let key in from) {
+      this.metas[key] = from[key];
+    }
+  }
 }

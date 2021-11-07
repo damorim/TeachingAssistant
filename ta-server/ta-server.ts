@@ -1,11 +1,38 @@
 import express = require('express');
 
+import {Aluno} from '../common/aluno';
+import {CadastroDeAlunos} from './cadastrodealunos';
+
 var taserver = express();
 
-var alunos = [{nome:'Paulo',cpf:'683',email:'phmb@cin.br',metas:{'requisitos':'MA'}},{nome:'Mariana',cpf:'456',email:'@mcb@cin.br',metas:{'requisitos':'MPA'}}];
+var alunos: CadastroDeAlunos = new CadastroDeAlunos();
 
-taserver.get('/', function (req, res) {
+taserver.use(express.json());
+
+
+taserver.get('/alunos', function (req, res) {
+  var aluno: string = JSON.stringify(alunos.getAlunos());
   res.send(alunos);
+})
+
+taserver.post('/aluno', function (req: express.Request, res: express.Response) {
+    var aluno: Aluno = <Aluno> req.body; //verificar se é mesmo Aluno!
+    aluno = alunos.criar(aluno);
+    if (aluno) {
+      res.send({"success": "O aluno foi cadastrado com sucesso"});
+    } else {
+      res.send({"failure": "O aluno não pode ser cadastrado"});
+    }
+})
+
+taserver.put('/aluno', function (req: express.Request, res: express.Response) {
+    var aluno: Aluno = <Aluno> req.body;
+    aluno = alunos.atualizar(aluno);
+    if (aluno) {
+      res.send({"success": "O aluno foi atualizado com sucesso"});
+    } else {
+      res.send({"failure": "O aluno não pode ser atualizado"});
+    }
 })
 
 taserver.listen(3000, function () {
