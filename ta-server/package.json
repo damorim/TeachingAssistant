@@ -1,0 +1,21 @@
+{
+  "name": "ta-server",
+  "version": "1.0.0",
+  "description": "Servidor do teaching assistant",
+  "main": "ta-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "./node_modules/typescript/bin/tsc",
+    "start": "npm run tsc && node compiledCode/ta-server.js"
+  },
+  "keywords": [],
+  "author": "Marcelo Damorim",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  }
+}
