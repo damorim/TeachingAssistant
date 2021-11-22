@@ -1,0 +1,27 @@
+{
+  "name": "tests-acceptance",
+  "description": "Testes de aceitação do teaching assistant",
+  "scripts": {
+    "tsc": "./node_modules/typescript/bin/tsc",
+    "test": "npm run tsc && protractor compiledCode/config/config.js",
+    "webdriver-update": "webdriver-manager update",
+    "webdriver-start": "webdriver-manager start"
+  },
+  "keywords": [],
+  "author": "Marcelo Damorim",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cucumber": "^7.0.0",
+    "@types/node": "^16.11.9",
+    "@types/selenium-webdriver": "^4.0.16",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "cucumber": "^6.0.5",
+    "cucumber-html-reporter": "^5.5.0",
+    "mkdirp": "^1.0.4",
+    "protractor": "^7.0.0",
+    "protractor-cucumber-framework": "^8.2.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  }
+}
