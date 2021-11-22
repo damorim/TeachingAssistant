@@ -42,6 +42,12 @@ taserver.put('/aluno', function (req: express.Request, res: express.Response) {
     }
 })
 
-taserver.listen(3000, function () {
+var server = taserver.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 })
+
+function closeServer(): void {
+  server.close();
+}
+
+export { server, closeServer }
