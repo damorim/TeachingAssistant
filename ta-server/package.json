@@ -4,7 +4,7 @@
   "description": "Servidor do teaching assistant",
   "main": "ta-server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run tsc && jasmine --config=./spec/support/jasmine.json",
     "tsc": "./node_modules/typescript/bin/tsc",
     "start": "npm run tsc && node compiledCode/ta-server/ta-server.js"
   },
@@ -16,6 +16,9 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "@types/jasmine": "^3.10.2",
+    "jasmine": "^3.10.0",
+    "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   }
 }
