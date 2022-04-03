@@ -6,11 +6,11 @@ import { Aluno } from './aluno';
 export class AlunoService {
   alunos: Aluno[] = [];
   
-  gravar(aluno: Aluno): boolean {
-    var result = false;
+  gravar(aluno: Aluno): Aluno | null {
+    var result = null;
     if (this.cpfNaoCadastrado(aluno.cpf)) {
       this.alunos.push(aluno);
-      result = true;
+      result = aluno;
     }
     return result;
   }
